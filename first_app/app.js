@@ -1,4 +1,11 @@
+const EventEmitter = require ('events');
 
-const logger = require('./logger');
+const Logger = require('./logger');
+const logger = new Logger();
 
-logger.log('Menina');
+logger.on('messageLogged', (arg) => {
+    console.log('Listener called', arg);
+});
+
+const log = require('./logger');
+log('Menina');
